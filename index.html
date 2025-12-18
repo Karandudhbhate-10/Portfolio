@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Karan Dudhbhate | Developer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Karan Dudhbhate, aspiring web developer seeking internship opportunities."
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #0f172a;
+        color: #e5e7eb;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      header {
+        border-bottom: 1px solid #1f2937;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(12px);
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .nav-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a {
+        opacity: 0.8;
+      }
+
+      .nav-links a:hover {
+        opacity: 1;
+      }
+
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2.5rem 1rem 3rem;
+      }
+
+      /* Hero section */
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        gap: 2rem;
+        align-items: center;
+        padding: 2.5rem 1.5rem;
+        border-radius: 1.5rem;
+        background: radial-gradient(
+            circle at top left,
+            #1d4ed8,
+            transparent 60%
+          ),
+          radial-gradient(circle at bottom right, #14b8a6, transparent 55%),
+          #020617;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.7);
+        margin-bottom: 3rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.3rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero-text h1 span {
+        color: #38bdf8;
+      }
+
+      .hero-subtitle {
+        font-size: 1.05rem;
+        color: #cbd5f5;
+        margin-bottom: 1rem;
+      }
+
+      .hero-description {
+        font-size: 0.96rem;
+        color: #e5e7eb;
+        margin-bottom: 1.7rem;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.7rem;
+      }
+
+      .tag {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: rgba(15, 23, 42, 0.7);
+        white-space: nowrap;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6rem 1.3rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+
+      .btn-primary {
+        background: #38bdf8;
+        color: #0f172a;
+        font-weight: 600;
+        box-shadow: 0 12px 25px rgba(56, 189, 248, 0.4);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 30px rgba(56, 189, 248, 0.55);
+        text-decoration: none;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border-color: #64748b;
+        color: #e5e7eb;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(15, 23, 42, 0.9);
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      .hero-right {
+        justify-self: center;
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .hero-card {
+        border-radius: 1.3rem;
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        padding: 1.3rem;
+        background: rgba(15, 23, 42, 0.9);
+        box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+        font-size: 0.86rem;
+      }
+
+      .hero-card h2 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        color: #e5e7eb;
+      }
+
+      .hero-card ul {
+        list-style: none;
+        display: grid;
+        gap: 0.35rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .hero-card li span {
+        color: #38bdf8;
+        margin-right: 0.4rem;
+      }
+
+      .hero-card small {
+        display: block;
+        opacity: 0.7;
+        font-size: 0.75rem;
+      }
+
+      /* Sections */
+      section {
+        margin-bottom: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-bottom: 1.2rem;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+
+      .skill-card {
+        padding: 1rem;
+        border-radius: 1rem;
+        background: #020617;
+        border: 1px solid #1f2937;
+        font-size: 0.9rem;
+      }
+
+      .skill-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        color: #e5e7eb;
+      }
+
+      .skill-list {
+        list-style: none;
+        font-size: 0.86rem;
+        color: #d1d5db;
+      }
+
+      .skill-list li::before {
+        content: "• ";
+        color: #38bdf8;
+      }
+
+      /* Project */
+      .project-card {
+        border-radius: 1.2rem;
+        padding: 1.2rem 1.3rem;
+        background: #020617;
+        border: 1px solid #1f2937;
+        display: grid;
+        gap: 0.6rem;
+        font-size: 0.92rem;
+      }
+
+      .project-title-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .project-title-row h3 {
+        font-size: 1rem;
+        color: #e5e7eb;
+      }
+
+      .badge {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid #4b5563;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.85;
+      }
+
+      .project-meta {
+        font-size: 0.8rem;
+        color: #9ca3af;
+      }
+
+      .project-tech {
+        font-size: 0.85rem;
+        color: #d1d5db;
+      }
+
+      .project-links {
+        margin-top: 0.3rem;
+        font-size: 0.85rem;
+      }
+
+      .project-links a {
+        color: #38bdf8;
+      }
+
+      .project-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        gap: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .contact-list {
+        list-style: none;
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .contact-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #9ca3af;
+      }
+
+      .contact-value a {
+        color: #e5e7eb;
+      }
+
+      .contact-value a:hover {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+
+      footer {
+        border-top: 1px solid #1f2937;
+        padding: 1.5rem 1rem 2rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-top: 1rem;
+      }
+
+      footer span {
+        color: #38bdf8;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-right {
+          order: -1;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        main {
+          padding-top: 1.8rem;
+        }
+      }
+      header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0f172a; /* dark navy */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f8fafc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #cbd5f5;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #6366f1;
+}
+
+/* underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* mobile responsive */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="nav-container">
+        <div class="logo">KARAN DUDHBHATE</div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Project</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="about">
+        <div class="hero-text">
+          <h1>Hi, I'm <span>Karan Dudhbhate</span></h1>
+          <p class="hero-subtitle">
+            Aspiring Web Developer & Internship Seeker
+          </p>
+          <p class="hero-description">
+            I enjoy building clean, responsive and user-friendly web
+            experiences. I'm currently focusing on full-stack development and
+            looking for an
+            <strong>internship opportunity</strong> where I can learn,
+            contribute and work on real-world projects.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React.js</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">Contact Me for Internship</a>
+            <a href="#projects" class="btn-secondary">View My Project</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <h2>Quick Profile</h2>
+            <ul>
+              <li><span>•</span> Final-year engineering student</li>
+              <li><span>•</span> Interested in full-stack web development</li>
+              <li><span>•</span> Actively looking for an internship role</li>
+            </ul>
+            <small
+              >Open to: Web Developer Intern, Frontend Intern, Full-Stack
+              Intern</small
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">
+          Technologies I am comfortable with and improving every day.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Frontend</h3>
+            <ul class="skill-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>React.js</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>Backend & Database</h3>
+            <ul class="skill-list">
+              <li>Node.js</li>
+              <li>MongoDB</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tools</h3>
+            <ul class="skill-list">
+              <li>Git</li>
+              <li>GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project -->
+      <article class="project-card" id="projects"    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 0 45px rgba(99,102,241,0.35)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px rgba(99,102,241,0.15)'">
+  <div class="project-title-row" style="display:flex; align-items:center; gap:10px;">
+    <h3 style="margin:0;">🏡 Wanderlust [Airbnb Clone]</h3>
+    <span
+      class="badge"
+      style="
+        font-size: 12px;
+        padding: 3px 8px;
+        background: #e0e7ff;
+        color: #1e3a8a;
+        border-radius: 12px;
+        font-weight: 500;
+      "
+    >
+      Web App
+    </span>
+  </div>
+
+  <p>
+    A responsive web application inspired by Airbnb, focusing on clean UI,
+    structured layouts, and a smooth user browsing experience.
+  </p>
+
+  <p class="project-meta">
+    Includes landing pages, property listings, and a modern design approach
+    suitable for both desktop and mobile devices.
+  </p>
+
+  <button
+    onclick="window.location.href='https://majorproject-9x83.onrender.com/listings'"
+    style="
+      padding: 7px 16px;
+      font-size: 13px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      width: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    "
+    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.2)'"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+  >
+    View
+  </button>
+
+  <p class="project-tech">
+    <strong>Tech Used:</strong> HTML, CSS, JavaScript, Node.js, Express, MongoDB
+  </p>
+</article>
+<br/>
+
+
+          <!-- second project -->
+
+          <article class="project-card" 
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 0 45px rgba(99,102,241,0.35)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px rgba(99,102,241,0.15)'">
+            <div
+              class="project-title-row"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <h3 style="margin: 0">🌦️ Weather App</h3>
+              <span
+                class="badge"
+                style="
+                  font-size: 12px;
+                  padding: 3px 8px;
+                  background: #e0e7ff;
+                  color: #1e3a8a;
+                  border-radius: 12px;
+                  font-weight: 500;
+                "
+              >
+                Web App
+              </span>
+            </div>
+
+            <p>
+              A clean and responsive weather application that provides real-time
+              weather updates for any city using a weather API.
+            </p>
+
+            <p class="project-meta">
+              Shows current temperature, weather condition, humidity, and
+              min/max temperature with a smooth and user-friendly UI.
+            </p>
+
+            <button
+              onclick='window.location.href="https://project3-git-main-karandudhbhate-10s-projects.vercel.app/"'
+              style="
+                padding: 7px 16px;
+                font-size: 13px;
+                background: linear-gradient(135deg, #2563eb, #1e40af);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: 500;
+                width: 100px;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+              "
+              onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.2)'"
+              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+            >
+              View
+            </button>
+
+            <p class="project-tech">
+              <strong>Tech Used:</strong> React.js ,HTML, CSS, JavaScript,
+              OpenWeather API
+            </p>
+          </article>
+          <br/>
+
+          <article class="project-card"  onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 0 45px rgba(99,102,241,0.35)'"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px rgba(99,102,241,0.15)'">
+  <div class="project-title-row" style="display:flex; align-items:center; gap:10px;" >
+    <h3 style="margin:0;">🎥 Baat Cheet [Zoom Clone]</h3>
+    <span
+      class="badge"
+      style="
+        font-size: 12px;
+        padding: 3px 8px;
+        background: #e0e7ff;
+        color: #1e3a8a;
+        border-radius: 12px;
+        font-weight: 500;
+      "
+    >
+      Web App
+    </span>
+  </div>
+
+  <p>
+    A real-time video calling web application inspired by Zoom, designed for
+    smooth peer-to-peer communication with a simple and clean user interface.
+  </p>
+
+  <p class="project-meta">
+    Supports video calls, user joining via meeting code, and a responsive layout
+    optimized for both desktop and mobile screens.
+  </p>
+
+  <button
+    onclick="window.location.href='https://zoomclone-2-3hip.onrender.com/'"
+    style="
+      padding: 7px 16px;
+      font-size: 13px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      width: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    "
+    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.2)'"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+  >
+    View
+  </button>
+
+  <p class="project-tech">
+    <strong>Tech Used:</strong> HTML, CSS, JavaScript, React, WebRTC, Socket.io, Node.js
+  </p>
+</article>
+
+
+          <p class="project-links">
+            <strong>Code:</strong>
+            <a
+              href="https://github.com/Karandudhbhate-10"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/Karandudhbhate-10
+            </a>
+          </p>
+        </article>
+      </section>
+
+
+      
+      <!-- certificate -->
+
+     <section class="certifications" style="margin-top:50px;">
+  <h2 style="color:#e5e7eb; margin-bottom:18px;">
+    Certifications
+  </h2>
+
+  <div
+    class="certificate-dark"
+    style="
+      position: relative;
+      padding: 22px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(99,102,241,0.25);
+      box-shadow: 0 0 30px rgba(99,102,241,0.15);
+      max-width: 720px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    "
+    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 0 45px rgba(99,102,241,0.35)'"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px rgba(99,102,241,0.15)'"
+  >
+    <!-- Header -->
+    <div
+      style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        margin-bottom:14px;
+      "
+    >
+      <h3 style="margin:0; color:#f8fafc;">
+        🎓 Full Stack Web Development
+      </h3>
+
+      <span
+        style="
+          font-size:12px;
+          padding:4px 10px;
+          border-radius:999px;
+          background: rgba(99,102,241,0.15);
+          color:#a5b4fc;
+          border: 1px solid rgba(99,102,241,0.3);
+        "
+      >
+        Certificate
+      </span>
+    </div>
+
+    <!-- Sub text -->
+    <p style="margin:0 0 10px 0; color:#94a3b8; font-size:14px;">
+      Apna College · Delta Full Stack Program
+    </p>
+
+    <p style="margin:0 0 14px 0; color:#e5e7eb; font-size:15px;">
+      Completed an intensive full stack web development program focused on
+      building scalable web applications using modern technologies.
+    </p>
+
+    <!-- Skills -->
+    <div
+      style="
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+        margin-bottom:16px;
+      "
+    >
+      <span style="background:#020617; border:1px solid #1e293b; color:#c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px;">HTML</span>
+      <span style="background:#020617; border:1px solid #1e293b; color:#c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px;">CSS</span>
+      <span style="background:#020617; border:1px solid #1e293b; color:#c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px;">JavaScript</span>
+      <span style="background:#020617; border:1px solid #1e293b; color:#c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px;">React</span>
+      <span style="background:#020617; border:1px solid #1e293b; color:#c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px;">Node.js</span>
+      <span style="background:#020617; border:1px solid #1e293b; color:#c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px;">MongoDB</span>
+    </div>
+
+    <!-- Button -->
+    <button
+      onclick="window.open('./apna-clg-certificate.pdf')" 
+      style="
+        padding:9px 20px;
+        font-size:13px;
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        color:white;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-weight:500;
+        box-shadow: 0 0 18px rgba(99,102,241,0.45);
+      "
+    >
+      View Certificate
+    </button>
+  </div>
+</section>
+
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Interested in hiring an intern? I'd be happy to connect.
+        </p>
+
+        <div class="contact-grid">
+          <div>
+            <p>I'm actively looking for an internship where I can:</p>
+            <ul class="skill-list" style="margin-top: 0.6rem">
+              <li>Work on real-world web projects</li>
+              <li>Improve my frontend and backend skills</li>
+              <li>Learn from experienced developers</li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="contact-list">
+              <li>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                  <a href="mailto:karandudhbhate2@gmail.com"
+                    >karandudhbhate2@gmail.com</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">
+                  <a href="tel:+918010579575">+91 80105 79575</a>
+                </div>
+              </li>
+              <li>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">
+                  <a
+                    href="https://github.com/Karandudhbhate-10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    github.com/Karandudhbhate-10
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">
+                  <a
+                    href="https://www.linkedin.com/in/karandudhbhate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    linkedin.com/in/karandudhbhate
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span>Karan Dudhbhate</span> · Open to Internship Opportunities
+    </footer>
+  </body>
+</html>
