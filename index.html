@@ -32,6 +32,93 @@
         text-decoration: underline;
       }
 
+      /* Navigation */
+      /* ===== AI HEADER ===== */
+.ai-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(18px);
+  background: #0f172a;
+  border-bottom: 1px solid rgba(99,102,241,0.25);
+  transition: all 0.35s ease;
+}
+
+.ai-header.scrolled {
+  padding: 2px 0;
+  background: #0f172a;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #e5e7eb;
+}
+
+.logo span {
+  color: #38bdf8;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: #cbd5f5;
+  padding: 6px 0;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+/* Animated underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(
+    135deg,
+    #38bdf8,
+    #6366f1,
+    #22d3ee
+  );
+  transition: width 0.35s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+
       header {
         border-bottom: 1px solid #1f2937;
         position: sticky;
@@ -71,31 +158,29 @@
       }
 
       main {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 2.5rem 1rem 3rem;
-      }
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 24px;
+    }
 
-      /* Hero section */
-      .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-        gap: 2rem;
-        align-items: center;
-        padding: 2.5rem 1.5rem;
-        border-radius: 1.5rem;
-        background: radial-gradient(
-            circle at top left,
-            #1d4ed8,
-            transparent 60%
-          ),
-          radial-gradient(circle at bottom right, #14b8a6, transparent 55%),
-          #020617;
-        border: 1px solid rgba(148, 163, 184, 0.3);
-        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.7);
-        margin-bottom: 3rem;
-      }
+    .hero {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      padding: 50px;
+      border-radius: 24px;
+      background: linear-gradient(120deg, #1b2977, #0f172a, #2d266c);
+      background-size: 300% 300%;
+      animation: bgFlow 8s ease infinite;
+      border: 1px solid rgba(99,102,241,0.3);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    }
 
+    @keyframes bgFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
       .hero-text h1 {
         font-size: 2.3rem;
         margin-bottom: 0.75rem;
@@ -456,30 +541,118 @@
   }
 }
 
+.profile-img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  perspective: 800px; /* enables 3D effect */
+}
+
+.profile-img {
+  width: 120px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.35);
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+  cursor: pointer;
+}
+
+/* Hover animation */
+.profile-img:hover {
+  transform: scale(1.08) rotateX(6deg) rotateY(-6deg);
+  box-shadow: 
+    0 0 35px rgba(56, 189, 248, 0.75),
+    0 10px 25px rgba(0, 0, 0, 0.6);
+  filter: brightness(1.05);
+}
+
+
+/* ===== AI CURSOR ===== */
+.ai-cursor,
+.ai-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* Main dot */
+.ai-cursor {
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  box-shadow: 0 0 12px rgba(56,189,248,0.9);
+}
+
+/* Trail glow */
+.ai-cursor-trail {
+  width: 32px;
+  height: 32px;
+  background: rgba(56,189,248,0.15);
+  box-shadow: 0 0 30px rgba(99,102,241,0.35);
+  transition: transform 0.15s ease;
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .ai-cursor,
+  .ai-cursor-trail {
+    display: none;
+  }
+}
+
+/* ===== ACTIVE NAV LINK ===== */
+.nav-link.active {
+  color: #38bdf8;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+
+
     </style>
   </head>
+  <!-- AI Cursor -->
+<div class="ai-cursor"></div>
+<div class="ai-cursor-trail"></div>
+
   <body>
-    <!-- Navigation -->
-    <header>
-      <div class="nav-container">
-        <div class="logo">KARAN DUDHBHATE</div>
-        <nav class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Project</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+    
+   
+   <!-- Navigation -->
+<header class="ai-header">
+  <div class="nav-container">
+    <div class="logo">KARAN <span>DUDHBHATE</span></div>
+
+    <nav class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
 
     <main>
       <!-- Hero -->
       <section class="hero" id="about">
         <div class="hero-text">
           <h1>Hi, I'm <span>Karan Dudhbhate</span></h1>
-          <p class="hero-subtitle">
+          <div class="typing" id="typing"></div>
+          <!-- <p class="hero-subtitle">
             Aspiring Web Developer & Internship Seeker
-          </p>
+          </p> -->
           <p class="hero-description">
             I enjoy building clean, responsive and user-friendly web
             experiences. I'm currently focusing on full-stack development and
@@ -498,13 +671,20 @@
           </div>
 
           <div class="hero-actions">
-            <a href="#contact" class="btn-primary">Contact Me for Internship</a>
-            <a href="#projects" class="btn-secondary">View My Project</a>
+            <a href="#contact" class="btn-primary">Hire Me </a>
+            <a href="Karan_Dudhbhate_Resume.pdf"
+            class="btn-secondary"
+            download>
+            Download Resume
+          </a>
           </div>
         </div>
 
         <div class="hero-right">
           <div class="hero-card">
+            <div class="profile-img-wrapper">
+              <img src="profile.jpg" alt="Karan Dudhbhate" class="profile-img" />
+            </div>
             <h2>Quick Profile</h2>
             <ul>
               <li><span>•</span> Final-year engineering student</li>
@@ -520,6 +700,7 @@
       </section>
 
       <!-- Skills -->
+       
       <section id="skills">
         <h2 class="section-title">Skills</h2>
         <p class="section-subtitle">
@@ -907,5 +1088,117 @@
     <footer>
       © <span>Karan Dudhbhate</span> · Open to Internship Opportunities
     </footer>
+
+    <script>
+      /* Typing effect */
+      const text = "Aspiring Web Developer • Full Stack • AI Curious";
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          document.getElementById("typing").textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 60);
+        }
+      }
+      type();
+
+    </script>
+    <script>
+      const header = document.querySelector(".ai-header");
+      
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+      </script>
+      <script>
+        const cursor = document.querySelector(".ai-cursor");
+        const trail = document.querySelector(".ai-cursor-trail");
+        
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+        
+        // Track mouse
+        window.addEventListener("mousemove", e => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        
+          cursor.style.left = mouseX + "px";
+          cursor.style.top = mouseY + "px";
+        });
+        
+        // Smooth trailing animation
+        function animateTrail() {
+          trailX += (mouseX - trailX) * 0.15;
+          trailY += (mouseY - trailY) * 0.15;
+        
+          trail.style.left = trailX + "px";
+          trail.style.top = trailY + "px";
+        
+          requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        /* Magnetic effect on buttons & links */
+        document.querySelectorAll("a, button").forEach(el => {
+          el.addEventListener("mouseenter", () => {
+            trail.style.transform = "translate(-50%, -50%) scale(1.6)";
+          });
+        
+          el.addEventListener("mouseleave", () => {
+            trail.style.transform = "translate(-50%, -50%) scale(1)";
+          });
+        });
+        </script>
+        <script>
+          const navLinks = document.querySelectorAll(".nav-link");
+          const cursorTextEl = document.getElementById("cursorText");
+          
+          /* Map sections to nav + cursor */
+          const navMap = [
+            { id: "about", label: "ABOUT" },
+            { id: "skills", label: "SKILLS" },
+            { id: "projects", label: "PROJECTS" },
+            { id: "contact", label: "CONTACT" }
+          ];
+          
+          /* Intersection Observer */
+          const navObserver = new IntersectionObserver(
+            entries => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const currentId = entry.target.id;
+          
+                  // Update nav active state
+                  navLinks.forEach(link => {
+                    link.classList.toggle(
+                      "active",
+                      link.getAttribute("href") === "#" + currentId
+                    );
+                  });
+          
+                  // Update cursor context
+                  const section = navMap.find(s => s.id === currentId);
+                  if (section && cursorTextEl) {
+                    cursorTextEl.textContent = section.label;
+                  }
+                }
+              });
+            },
+            {
+              threshold: 0.6
+            }
+          );
+          
+          /* Observe sections */
+          navMap.forEach(section => {
+            const el = document.getElementById(section.id);
+            if (el) navObserver.observe(el);
+          });
+          </script>
+          
   </body>
 </html>
