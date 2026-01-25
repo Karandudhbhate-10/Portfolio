@@ -1153,52 +1153,7 @@
           });
         });
         </script>
-        <script>
-          const navLinks = document.querySelectorAll(".nav-link");
-          const cursorTextEl = document.getElementById("cursorText");
-          
-          /* Map sections to nav + cursor */
-          const navMap = [
-            { id: "about", label: "ABOUT" },
-            { id: "skills", label: "SKILLS" },
-            { id: "projects", label: "PROJECTS" },
-            { id: "contact", label: "CONTACT" }
-          ];
-          
-          /* Intersection Observer */
-          const navObserver = new IntersectionObserver(
-            entries => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  const currentId = entry.target.id;
-          
-                  // Update nav active state
-                  navLinks.forEach(link => {
-                    link.classList.toggle(
-                      "active",
-                      link.getAttribute("href") === "#" + currentId
-                    );
-                  });
-          
-                  // Update cursor context
-                  const section = navMap.find(s => s.id === currentId);
-                  if (section && cursorTextEl) {
-                    cursorTextEl.textContent = section.label;
-                  }
-                }
-              });
-            },
-            {
-              threshold: 0.6
-            }
-          );
-          
-          /* Observe sections */
-          navMap.forEach(section => {
-            const el = document.getElementById(section.id);
-            if (el) navObserver.observe(el);
-          });
-          </script>
+        
           
   </body>
 </html>
